@@ -11,6 +11,12 @@ pipeline {
                 sh 'mvn -B -DskipTests clean package' 
             }
         }
+		stage('Check') {
+			steps {
+				sh 'echo "CWD: "; pwd; ls -la'
+				sh 'echo "Previous dir: "; cd ..; pwd; ls -la'
+			}
+		}
     }
 	post {
         always {
